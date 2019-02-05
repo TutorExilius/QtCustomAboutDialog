@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QMap>
+#include <QMessageBox>
+#include "customaboutdialog.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,24 +28,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAppAbout_triggered()
 {
-    QVector<QPair<DialogSection, QString>> sectionStrings{
-        { DialogSection::ICON, ":/tutor_exilius_logo.png" },
-        { DialogSection::TITLE, "About CustomAboutDialogDemo" },
-        { DialogSection::RELEASE_DATE, "Released: 2019-01-25" },
-        { DialogSection::VERSION, "v1.0" },
-        { DialogSection::SHORT_INFO, "That's a Tutor Exilius Qt project started 2019-01-24 on "
+    QMap<AboutSection, QString> sectionStrings{
+        { AboutSection::LOGO, ":/tutor_exilius_logo_64x64.png" },
+        { AboutSection::TITLE, "About CustomAboutDialogDemo" },
+        { AboutSection::DATE, "Released: 2019-01-25" },
+        { AboutSection::VERSION, "v1.0" },
+        { AboutSection::SHORT_INFO, "That's a Tutor Exilius Qt project started 2019-01-24 on "
                                      "<a href=\"https://twitch.tv/tutorexilius\">https://twitch.tv/tutorexilius</a>" },
-        { DialogSection::DESCRIPTION, "It's a try to implement a custom about dialog in Qt which can be used in different Qt GUI projects." },
-        { DialogSection::AUTHOR, "Tutor Exilius" },
-        { DialogSection::CREDITS, "Special thanks to my twitch community which supported in my live stream chat!" },
-        { DialogSection::LICENCE, "GPLv3. See Licence.txt" },
-        { DialogSection::RESOURCES, "You can download the source code on github: "
+        { AboutSection::DESCRIPTION, "It's a try to implement a custom about dialog in Qt which can be used in different Qt GUI projects." },
+        { AboutSection::AUTHOR, "Tutor Exilius" },
+        { AboutSection::CREDITS, "Special thanks to my twitch community which supported in my live stream chat!" },
+        { AboutSection::LICENCE, "GPLv3. See Licence.txt" },
+        { AboutSection::RESOURCES, "You can download the source code on github: "
                     "<a href=\"https://github.com/tutorexilius/QtCustomAboutDialog\">https://github.com/tutorexilius/QtCustomAboutDialog</a>." }
     };
 
-    CustomAboutDialog *about = new CustomAboutDialog{ this, sectionStrings };
-
-    about->show();
+    CustomAboutDialog::about( this, sectionStrings );
 }
 
 void MainWindow::onAboutQt_triggered()

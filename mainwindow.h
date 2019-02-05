@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 
-#include "customaboutdialog.h"
-
 
 namespace Ui {
     class MainWindow;
