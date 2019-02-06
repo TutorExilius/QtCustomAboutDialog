@@ -92,10 +92,10 @@ namespace CustomAboutDialog
               ? "<p>" + credits + "</p>"
               : "";
         content += ( !author.isEmpty() )     // AUTHOR
-              ? "<h3>Author</h3><p>" + author + "</p>"
+              ? "<p><b>Author</b><br>" + author + "</p>"
               : "";
         content += ( !licence.isEmpty() )      // LICENCE
-                ? "<h3>Licence</h3><p>" + licence + "</p>"
+                ? "<p><b>Licence</b><br>" + licence + "</p>"
                 : "";
 
         QMessageBox *msgBox = new QMessageBox{ parent };
